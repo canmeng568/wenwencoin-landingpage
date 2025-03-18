@@ -9,14 +9,14 @@ import React, {
   useState
 } from 'react'
 
-import { Connection, ParsedAccountData, PublicKey } from '@solana/web3.js'
+// import { Connection, ParsedAccountData, PublicKey } from '@solana/web3.js'
 
-import { MIN_WEN_AMOUNT } from '@/constants'
+// import { MIN_WEN_AMOUNT } from '@/constants'
 
 // Type definition for the Solana object
 interface Solana {
   isPhantom: boolean
-  publicKey: PublicKey | null
+  publicKey: '' | null
   connect: () => Promise<void>
   disconnect: () => Promise<void>
   on: (
@@ -50,7 +50,7 @@ export const PhantomWalletProvider: React.FC<PhantomWalletProviderProps> = ({
   const [wallet, setWallet] = useState<Solana | null>(null)
   const [publicKey, setPublicKey] = useState<string | null>(null)
   const [connected, setConnected] = useState<boolean>(false)
-  const [isEligible, setIsEligible] = useState<boolean>(false)
+  const [isEligible] = useState<boolean>(false)
 
   useEffect(() => {
     const { solana } = window as unknown as { solana: Solana } // Apply the Solana type here
@@ -77,18 +77,18 @@ export const PhantomWalletProvider: React.FC<PhantomWalletProviderProps> = ({
     }
 
     try {
-      const connection = new Connection(process.env.QUICKNODE_URL!)
-      const ownerPublicKey = new PublicKey(publicKey)
-      const mintPublicKey = new PublicKey(process.env.WEN_PUBLIC_ADDRESS!)
-      const info = await connection.getTokenAccountBalance(ownerPublicKey)
-      const amount = info?.value?.amount || 0
-      const mintInfo = await connection.getParsedAccountInfo(mintPublicKey)
-      const decimals =
-        (mintInfo.value?.data as ParsedAccountData)?.parsed?.info?.decimals || 0
-      const WenCoinAmount = Number(amount) / Math.pow(10, decimals)
+      // const connection = new Connection(process.env.QUICKNODE_URL!)
+      // const ownerPublicKey = new PublicKey(publicKey)
+      // const mintPublicKey = new PublicKey(process.env.WEN_PUBLIC_ADDRESS!)
+      // const info = await connection.getTokenAccountBalance(ownerPublicKey)
+      // const amount = info?.value?.amount || 0
+      // const mintInfo = await connection.getParsedAccountInfo(mintPublicKey)
+      // const decimals =
+      //   (mintInfo.value?.data as ParsedAccountData)?.parsed?.info?.decimals || 0
+      // const WenCoinAmount = Number(amount) / Math.pow(10, decimals)
 
-      if (WenCoinAmount && WenCoinAmount >= Number(MIN_WEN_AMOUNT))
-        setIsEligible(true)
+      // if (WenCoinAmount && WenCoinAmount >= Number(MIN_WEN_AMOUNT))
+      //   setIsEligible(true)
     } catch (err) {
       console.error('Failed to get token balance:', err)
       return

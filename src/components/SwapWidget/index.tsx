@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react'
+// import React, { useCallback, useEffect, useState } from 'react'
+import React from 'react'
 
 const SwapWidget = () => {
-  const WEN_PUBLIC_ADDRESS = process.env.WEN_PUBLIC_ADDRESS
-  const QUICKNODE_URL = process.env.QUICKNODE_URL
-  const [initialized, setInitialized] = useState(false)
+  // const WEN_PUBLIC_ADDRESS = process.env.WEN_PUBLIC_ADDRESS
+  // const QUICKNODE_URL = process.env.QUICKNODE_URL
+  // const [initialized, setInitialized] = useState(false)
 
   // const initializeJupiter = useCallback(async () => {
   //   try {

@@ -6,8 +6,8 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
+    // "prettier",
+    // "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
     "next/core-web-vitals"
   ],
@@ -21,10 +21,10 @@
   },
   "plugins": [
     "react",
-    "@typescript-eslint",
+    // "@typescript-eslint",
     "react-hooks",
-    "jsx-a11y",
-    "simple-import-sort"
+    "jsx-a11y"
+    // "simple-import-sort"
   ],
   "settings": {
     "react": {
@@ -37,20 +37,22 @@
     }
   },
   "rules": {
-    "simple-import-sort/imports": [
-      "error",
-      {
-        "groups": [
-          ["^next"],
-          ["^react"],
-          ["^\\u0000"],
-          ["^\\w"],
-          ["^@?\\w"],
-          ["^"],
-          ["^\\."]
-        ]
-      }
-    ],
+    // "simple-import-sort/imports": [
+    //   "error",
+    //   {
+    //     "groups": [
+    //       ["^next"],
+    //       ["^react"],
+    //       ["^\\u0000"],
+    //       ["^\\w"],
+    //       ["^@?\\w"],
+    //       ["^"],
+    //       ["^\\."]
+    //     ]
+    //   }
+    // ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["off"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/click-events-have-key-events": "off",

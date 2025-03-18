@@ -1,13 +1,13 @@
 import {
   Dispatch,
-  FormEvent,
+  // FormEvent,
   SetStateAction,
-  useCallback,
+  // useCallback,
   useState
 } from 'react'
-import toast from 'react-hot-toast'
+// import toast from 'react-hot-toast'
 
-import * as yup from 'yup'
+// import * as yup from 'yup'
 
 // import { supabase } from '@/services/supabase'
 import { DEFAULT_CITY, ICity } from '@/types'
@@ -23,20 +23,20 @@ type IAddLocation = {
   // fetchMarkers: () => void
 }
 
-const nameSchema = yup
-  .string()
-  .required('Please enter a name')
-  .max(20, 'name is too long (20 characters max)')
-  .min(3, 'name is too short (3 characters min)')
+// const nameSchema = yup
+//   .string()
+//   .required('Please enter a name')
+//   .max(20, 'name is too long (20 characters max)')
+//   .min(3, 'name is too short (3 characters min)')
 
 // const AddLocation = ({ showForm, setShowForm, fetchMarkers }: IAddLocation) => {
 const AddLocation = ({ showForm, setShowForm }: IAddLocation) => {
-  const [selected, setSelected] = useState<ICity>(DEFAULT_CITY)
-  const [twitterName, setTwitterName] = useState<string>('')
-  const [dropdownError, setDropDownError] = useState<string>('')
-  const [nameError, setNameError] = useState<string>('')
-  const [name, setName] = useState<string>('')
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [selected] = useState<ICity>(DEFAULT_CITY)
+  // const [twitterName, setTwitterName] = useState<string>('')
+  // const [dropdownError, setDropDownError] = useState<string>('')
+  const [nameError] = useState<string>('')
+  const [, setName] = useState<string>('')
+  const [isLoading] = useState<boolean>(false)
 
   // const handleAddLocation = useCallback(
   //   async (event: FormEvent<HTMLFormElement>) => {
@@ -108,7 +108,7 @@ const AddLocation = ({ showForm, setShowForm }: IAddLocation) => {
           id="twitter"
           title="Twitter / Username"
           placeholder="elonmusk"
-          onChange={(e) => setTwitterName(e.target.value)}
+          // onChange={(e) => setTwitterName(e.target.value)}
         />
         <button
           disabled={isLoading || selected.name === ''}

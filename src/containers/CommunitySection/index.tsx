@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
+import { useState } from 'react'
+// import toast from 'react-hot-toast'
 
 import { AddLocation, NextLink } from '@/components'
 import { MapComponent } from '@/components/Map/OpenStreetMap'
@@ -8,7 +8,7 @@ import { IUser } from '@/types'
 
 const CommunitySection = () => {
   const [showForm, setShowForm] = useState<boolean>(false)
-  const [users, setUsers] = useState<IUser[]>([])
+  const [users] = useState<IUser[]>([])
 
   // const fetchMarkers = useCallback(async () => {
   //   const { data, error } = await supabase.from('users').select('*')

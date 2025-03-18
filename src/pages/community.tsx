@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
+import { useState } from 'react'
+// import toast from 'react-hot-toast'
 
 import { AddLocation, CountUp, NextLink } from '@/components'
 import { MapComponent } from '@/components/Map/OpenStreetMap'
@@ -10,12 +10,12 @@ import { IUser } from '@/types'
 
 const JoinCommunity = () => {
   // const { connected, isEligible, connect } = usePhantomWallet()
-  let isEligible = true
-  let connected = true
+  const isEligible = true
+  const connected = true
 
   const [showForm, setShowForm] = useState<boolean>(false)
 
-  const [users, setUsers] = useState<IUser[]>([])
+  const [users] = useState<IUser[]>([])
 
   // const fetchMarkers = useCallback(async () => {
   //   const { data, error } = await supabase.from('users').select('*')
@@ -63,7 +63,7 @@ const JoinCommunity = () => {
           ) : (
             <button
               className="w-max rounded-2.5 border bg-black px-5 py-2.5 font-medium text-white transition-colors hover:border-black hover:bg-white hover:text-black"
-              // onClick={connect}
+            // onClick={connect}
             >
               Connect to Phantom Wallet
             </button>
