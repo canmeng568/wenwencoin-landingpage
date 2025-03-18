@@ -9,18 +9,18 @@ import toast from 'react-hot-toast'
 
 import * as yup from 'yup'
 
-import { supabase } from '@/services/supabase'
+// import { supabase } from '@/services/supabase'
 import { DEFAULT_CITY, ICity } from '@/types'
 import { cn } from '@/utils/cn'
 
-import DropDown from '../DropDown'
+// import DropDown from '../DropDown'
 import FormLine from '../FormLine'
 import { Cross, Spinner } from '../icons'
 
 type IAddLocation = {
   showForm: boolean
   setShowForm: Dispatch<SetStateAction<boolean>>
-  fetchMarkers: () => void
+  // fetchMarkers: () => void
 }
 
 const nameSchema = yup
@@ -29,7 +29,8 @@ const nameSchema = yup
   .max(20, 'name is too long (20 characters max)')
   .min(3, 'name is too short (3 characters min)')
 
-const AddLocation = ({ showForm, setShowForm, fetchMarkers }: IAddLocation) => {
+// const AddLocation = ({ showForm, setShowForm, fetchMarkers }: IAddLocation) => {
+const AddLocation = ({ showForm, setShowForm }: IAddLocation) => {
   const [selected, setSelected] = useState<ICity>(DEFAULT_CITY)
   const [twitterName, setTwitterName] = useState<string>('')
   const [dropdownError, setDropDownError] = useState<string>('')
@@ -37,43 +38,43 @@ const AddLocation = ({ showForm, setShowForm, fetchMarkers }: IAddLocation) => {
   const [name, setName] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const handleAddLocation = useCallback(
-    async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault()
-      setIsLoading(true)
-      if (!selected.name) {
-        setDropDownError('Please select a location')
-        return
-      }
-      try {
-        const username = await nameSchema.validate(name)
+  // const handleAddLocation = useCallback(
+  //   async (event: FormEvent<HTMLFormElement>) => {
+  //     event.preventDefault()
+  //     setIsLoading(true)
+  //     if (!selected.name) {
+  //       setDropDownError('Please select a location')
+  //       return
+  //     }
+  //     try {
+  //       const username = await nameSchema.validate(name)
 
-        const { error } = await supabase.rpc('add_user_and_city', {
-          username,
-          city_name: selected.name,
-          latitude: selected.lat,
-          longitude: selected.lng,
-          twitter: twitterName
-        })
-        setIsLoading(false)
+  //       const { error } = await supabase.rpc('add_user_and_city', {
+  //         username,
+  //         city_name: selected.name,
+  //         latitude: selected.lat,
+  //         longitude: selected.lng,
+  //         twitter: twitterName
+  //       })
+  //       setIsLoading(false)
 
-        if (error) {
-          toast.error(error.message)
-          return
-        } else toast.success('Thanks for adding a location!')
-        fetchMarkers()
-        setSelected(DEFAULT_CITY)
-        setName('')
-      } catch (error) {
-        if (error instanceof yup.ValidationError) {
-          setNameError(error.message)
-          setIsLoading(false)
-          return
-        }
-      }
-    },
-    [fetchMarkers, name, selected.lat, selected.lng, selected.name, twitterName]
-  )
+  //       if (error) {
+  //         toast.error(error.message)
+  //         return
+  //       } else toast.success('Thanks for adding a location!')
+  //       fetchMarkers()
+  //       setSelected(DEFAULT_CITY)
+  //       setName('')
+  //     } catch (error) {
+  //       if (error instanceof yup.ValidationError) {
+  //         setNameError(error.message)
+  //         setIsLoading(false)
+  //         return
+  //       }
+  //     }
+  //   },
+  //   [fetchMarkers, name, selected.lat, selected.lng, selected.name, twitterName]
+  // )
 
   return (
     <div
@@ -85,7 +86,7 @@ const AddLocation = ({ showForm, setShowForm, fetchMarkers }: IAddLocation) => {
       )}
     >
       <form
-        onSubmit={handleAddLocation}
+        // onSubmit={handleAddLocation}
         className="flex flex-wrap items-end gap-5"
       >
         <FormLine
@@ -95,13 +96,13 @@ const AddLocation = ({ showForm, setShowForm, fetchMarkers }: IAddLocation) => {
           placeholder="Anna Smith"
           onChange={(e) => setName(e.target.value)}
         />
-        <DropDown
+        {/* <DropDown
           error={dropdownError}
           onLocationSelect={setSelected}
           title="Location"
           id="city"
           placeholder="New York"
-        />
+        /> */}
         <FormLine
           error={nameError}
           id="twitter"

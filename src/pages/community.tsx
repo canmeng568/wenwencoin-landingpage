@@ -4,26 +4,28 @@ import toast from 'react-hot-toast'
 import { AddLocation, CountUp, NextLink } from '@/components'
 import { MapComponent } from '@/components/Map/OpenStreetMap'
 import { HOLDERS_WORLDWIDE, MIN_WEN_AMOUNT } from '@/constants'
-import { usePhantomWallet } from '@/contexts/PhantomWalletContext'
-import { supabase } from '@/services/supabase'
+// import { usePhantomWallet } from '@/contexts/PhantomWalletContext'
+// import { supabase } from '@/services/supabase'
 import { IUser } from '@/types'
 
 const JoinCommunity = () => {
-  const { connected, isEligible, connect } = usePhantomWallet()
+  // const { connected, isEligible, connect } = usePhantomWallet()
+  let isEligible = true
+  let connected = true
 
   const [showForm, setShowForm] = useState<boolean>(false)
 
   const [users, setUsers] = useState<IUser[]>([])
 
-  const fetchMarkers = useCallback(async () => {
-    const { data, error } = await supabase.from('users').select('*')
-    if (error) toast.error(error.message)
-    else setUsers(data)
-  }, [])
+  // const fetchMarkers = useCallback(async () => {
+  //   const { data, error } = await supabase.from('users').select('*')
+  //   if (error) toast.error(error.message)
+  //   else setUsers(data)
+  // }, [])
 
-  useEffect(() => {
-    fetchMarkers()
-  }, [fetchMarkers])
+  // useEffect(() => {
+  //   fetchMarkers()
+  // }, [fetchMarkers])
 
   return (
     <>
@@ -61,7 +63,7 @@ const JoinCommunity = () => {
           ) : (
             <button
               className="w-max rounded-2.5 border bg-black px-5 py-2.5 font-medium text-white transition-colors hover:border-black hover:bg-white hover:text-black"
-              onClick={connect}
+              // onClick={connect}
             >
               Connect to Phantom Wallet
             </button>
@@ -82,7 +84,7 @@ const JoinCommunity = () => {
       </div>
       <div>
         <AddLocation
-          fetchMarkers={fetchMarkers}
+          // fetchMarkers={fetchMarkers}
           showForm={showForm}
           setShowForm={setShowForm}
         />

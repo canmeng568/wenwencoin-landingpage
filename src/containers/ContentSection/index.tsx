@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { FlipWords } from '@/components'
+// import { FlipWords } from '@/components'
 import {
   Africa,
   Antarctica,
@@ -66,7 +66,7 @@ const Content = () => {
       <div className="flex flex-col gap-5 md:items-center">
         <p className="max-w-screen-sm text-center text-2xl font-bold md:text-3xl">
           Onboarding the
-          <FlipWords words={['World', 'Massess', 'Universe', 'Cults']} />, One
+          {/* <FlipWords words={['World', 'Massess', 'Universe', 'Cults']} />, One */}
           Wen at a time.
         </p>
       </div>

@@ -7,11 +7,12 @@ import '@jup-ag/terminal/css'
 
 import { Layout, SwapWidget } from '@/components'
 import { AnimationProvider } from '@/contexts/AnimationContext'
-import { PhantomWalletProvider } from '@/contexts/PhantomWalletContext'
+// import { PhantomWalletProvider } from '@/contexts/PhantomWalletContext'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <PhantomWalletProvider>
+    // <PhantomWalletProvider>
+    <>
       <SwapWidget />
       <AnimationProvider>
         <Layout>
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
           right: '1.25rem'
         }}
       />
-    </PhantomWalletProvider>
+      </>
+    // </PhantomWalletProvider>
   )
 }
